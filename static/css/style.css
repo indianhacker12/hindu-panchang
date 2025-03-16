@@ -1,0 +1,519 @@
+:root {
+    --primary-color: #ff5722;
+    --secondary-color: #ff8a65;
+    --accent-color: #c41c00;
+    --text-color: #333;
+    --light-text: #666;
+    --background-color: #f9f5f0;
+    --card-bg: #fff;
+    --border-color: #e0e0e0;
+    --festival-color: #4caf50;
+    --tithi-color: #7e57c2;
+    --nakshatra-color: #e91e63;
+    --yoga-color: #2196f3;
+    --karana-color: #ff9800;
+    --tab-active: #ff5722;
+    --tab-inactive: #ffccbc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path fill="%23ffccbc" fill-opacity="0.2" d="M50 0 L100 50 L50 100 L0 50 Z" /></svg>');
+    background-size: 100px 100px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px 0;
+    border-bottom: 2px solid var(--primary-color);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.logo i {
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+    padding: 10px;
+    border-radius: 50%;
+    border: 2px solid var(--secondary-color);
+}
+
+header h1 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-family: 'Yatra One', cursive;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+header p {
+    color: var(--light-text);
+    font-size: 1.1rem;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 4px solid var(--primary-color);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+.date-selector {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.date-input {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    background-color: var(--card-bg);
+    padding: 15px 20px;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.date-input label {
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.date-input input {
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 25px;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+.date-input input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(255, 87, 34, 0.2);
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 500;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+button:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button i {
+    font-size: 0.9em;
+}
+
+.panchang-result h2, .festivals-section h2, .calendar-section h2, .info-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: 'Yatra One', cursive;
+    font-size: 1.8rem;
+}
+
+.panchang-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.panchang-details div {
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+    transition: transform 0.3s;
+    border-left: 4px solid var(--primary-color);
+}
+
+.panchang-details div:nth-child(2) {
+    border-left-color: var(--tithi-color);
+}
+
+.panchang-details div:nth-child(3) {
+    border-left-color: var(--nakshatra-color);
+}
+
+.panchang-details div:nth-child(4) {
+    border-left-color: var(--yoga-color);
+}
+
+.panchang-details div:nth-child(5) {
+    border-left-color: var(--karana-color);
+}
+
+.panchang-details div:hover {
+    transform: translateY(-5px);
+}
+
+.panchang-details h3 {
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.panchang-details h3 i {
+    font-size: 0.9em;
+}
+
+.panchang-details p {
+    font-size: 1rem;
+}
+
+.panchang-details .progress-bar {
+    height: 6px;
+    background-color: #e0e0e0;
+    border-radius: 3px;
+    margin-top: 8px;
+    overflow: hidden;
+}
+
+.panchang-details .progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 3px;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.tab-btn {
+    background-color: var(--tab-inactive);
+    color: var(--text-color);
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.tab-btn.active {
+    background-color: var(--tab-active);
+    color: white;
+}
+
+.tab-content {
+    position: relative;
+}
+
+.tab-pane {
+    display: none;
+    animation: fadeIn 0.5s;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.calendar-section {
+    margin-bottom: 30px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: var(--card-bg);
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 10px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    color: white;
+    border-radius: 8px;
+    padding: 12px 0;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.calendar-day {
+    min-height: 100px;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--card-bg);
+    position: relative;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar-day:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.calendar-day.empty {
+    background-color: transparent;
+    border: none;
+}
+
+.calendar-day.today {
+    background-color: #fff8e1;
+    border: 2px solid var(--primary-color);
+}
+
+.calendar-day .date {
+    font-weight: 600;
+    margin-bottom: 5px;
+    text-align: center;
+    background-color: #f5f5f5;
+    padding: 3px;
+    border-radius: 4px;
+}
+
+.calendar-day .tithi {
+    font-size: 0.8rem;
+    color: var(--tithi-color);
+    margin-bottom: 3px;
+}
+
+.calendar-day .nakshatra {
+    font-size: 0.8rem;
+    color: var(--nakshatra-color);
+    margin-bottom: 3px;
+}
+
+.calendar-day .festival {
+    font-size: 0.8rem;
+    color: var(--festival-color);
+    font-weight: 500;
+    margin-top: auto;
+    padding-top: 5px;
+    border-top: 1px dashed #e0e0e0;
+}
+
+.festivals-section ul {
+    list-style-type: none;
+}
+
+.festivals-section li {
+    padding: 15px;
+    margin-bottom: 15px;
+    border-left: 4px solid var(--festival-color);
+    background-color: #f8f8f8;
+    border-radius: 0 8px 8px 0;
+    transition: transform 0.3s;
+}
+
+.festivals-section li:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.festivals-section .festival-date {
+    font-weight: 600;
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.info-content {
+    padding: 10px;
+}
+
+.info-content h3 {
+    color: var(--primary-color);
+    margin: 20px 0 10px;
+    font-size: 1.3rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 5px;
+}
+
+.info-content h3:first-child {
+    margin-top: 0;
+}
+
+.info-content p {
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.loader {
+    text-align: center;
+    padding: 20px;
+    color: var(--light-text);
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 40px 0 20px;
+    margin-top: 50px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.footer-section h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section a:hover {
+    color: var(--primary-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    margin-top: 20px;
+    border-top: 1px solid #444;
+    color: #999;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .panchang-details {
+        grid-template-columns: 1fr;
+    }
+    
+    .calendar-day {
+        min-height: 80px;
+        font-size: 0.9rem;
+        padding: 5px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .tabs {
+        flex-wrap: wrap;
+    }
+    
+    .tab-btn {
+        flex: 1 1 auto;
+        text-align: center;
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .weekdays div, .calendar-day {
+        font-size: 0.8rem;
+    }
+    
+    .calendar-day {
+        min-height: 60px;
+        padding: 3px;
+    }
+    
+    .date-input {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px;
+        border-radius: 12px;
+    }
+    
+    .card {
+        padding: 15px;
+    }
+    
+    .panchang-result h2, .festivals-section h2, .calendar-section h2 {
+        font-size: 1.5rem;
+    }
+} 

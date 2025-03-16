@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>हिन्दू पंचांग - Hindu Panchang</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Yatra+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-om"></i>
+            </div>
+            <h1>हिन्दू पंचांग</h1>
+            <p>Hindu Calendar with Tithi, Nakshatra, Yoga, Karana and Festivals</p>
+        </header>
+
+        <div class="date-selector">
+            <div class="date-input">
+                <label for="date-picker">Select Date:</label>
+                <input type="date" id="date-picker" value="{{ today }}">
+                <button id="get-panchang"><i class="fas fa-calendar-day"></i> Show Panchang</button>
+            </div>
+        </div>
+
+        <div class="panchang-result">
+            <div class="card" id="panchang-card">
+                <h2><i class="fas fa-star"></i> आज का पंचांग <i class="fas fa-star"></i></h2>
+                <div class="panchang-details" id="panchang-details">
+                    <p>Select a date to view panchang details</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="calendar-tab"><i class="fas fa-calendar-alt"></i> Calendar</button>
+            <button class="tab-btn" data-tab="festivals-tab"><i class="fas fa-gifts"></i> Festivals</button>
+            <button class="tab-btn" data-tab="info-tab"><i class="fas fa-info-circle"></i> Info</button>
+        </div>
+
+        <div class="tab-content">
+            <div id="calendar-tab" class="tab-pane active">
+                <div class="calendar-section">
+                    <div class="calendar-header">
+                        <button id="prev-month"><i class="fas fa-chevron-left"></i></button>
+                        <h2 id="calendar-title">Calendar</h2>
+                        <button id="next-month"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div class="weekdays">
+                        <div>Sun</div>
+                        <div>Mon</div>
+                        <div>Tue</div>
+                        <div>Wed</div>
+                        <div>Thu</div>
+                        <div>Fri</div>
+                        <div>Sat</div>
+                    </div>
+                    <div class="calendar-grid" id="calendar-grid">
+                        <!-- Calendar days will be inserted here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <div id="festivals-tab" class="tab-pane">
+                <div class="festivals-section">
+                    <div class="card">
+                        <h2><i class="fas fa-gifts"></i> आने वाले त्योहार</h2>
+                        <div id="upcoming-festivals">
+                            <div class="loader">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="info-tab" class="tab-pane">
+                <div class="info-section">
+                    <div class="card">
+                        <h2><i class="fas fa-info-circle"></i> पंचांग के बारे में</h2>
+                        <div class="info-content">
+                            <h3>तिथि (Tithi)</h3>
+                            <p>तिथि चंद्रमा और सूर्य के बीच के कोण पर आधारित है। एक पूर्ण चंद्र चक्र में 30 तिथियां होती हैं, जिन्हें शुक्ल पक्ष और कृष्ण पक्ष में विभाजित किया गया है।</p>
+                            
+                            <h3>नक्षत्र (Nakshatra)</h3>
+                            <p>नक्षत्र आकाश में चंद्रमा की स्थिति को दर्शाता है। कुल 27 नक्षत्र हैं, जो पूरे आकाशीय मार्ग को कवर करते हैं।</p>
+                            
+                            <h3>योग (Yoga)</h3>
+                            <p>योग सूर्य और चंद्रमा के संयुक्त प्रभाव को दर्शाता है। कुल 27 योग हैं।</p>
+                            
+                            <h3>करण (Karana)</h3>
+                            <p>करण एक तिथि का आधा भाग होता है। एक चंद्र मास में कुल 60 करण होते हैं।</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>हिन्दू पंचांग</h3>
+                <p>A comprehensive Hindu calendar with accurate panchang calculations.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#" id="today-link">Today's Panchang</a></li>
+                    <li><a href="#" data-tab="festivals-tab" class="tab-link">Festivals</a></li>
+                    <li><a href="#" data-tab="info-tab" class="tab-link">About Panchang</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Hindu Panchang. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html> 
